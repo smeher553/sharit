@@ -1,0 +1,70 @@
+
+:host {
+  display: flex;
+  justify-content: center;
+  
+}
+
+  .login-button{
+    background-color: green;
+    color: white;
+  }
+
+  .login-button:hover{
+    background-color:lightgreen;
+    color: black;
+    border: o.5px solid;
+  }
+
+  .register-div:hover .register-question{
+   
+    color: black;
+    opacity: 1;
+  }
+
+  .register-div:hover .register-button{
+   
+    background-color: lightblue;
+    color: black;
+    border: 1px solid;
+  }
+
+  .register-div
+  .login-div{
+    display: grid;
+    align-items: center;
+  }
+
+
+
+  .register-question{
+    color: grey;
+    opacity: 0.5;
+    padding-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  
+
+  .login-card{
+    margin: 100px 0px;
+    max-width:300px;
+    border-color: chartreuse;
+    background-color:lightgrey;
+  }
+
+  .login-card:hover {
+    border: 0.5px solid grey;
+}
+
+
+.buttons{
+  display: grid;
+}
+
+.main-heading{
+  text-align: center;
+  font-family: 'Lilita One', cursive;
+  margin-bottom: 20px;
+}
+
