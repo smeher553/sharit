@@ -1,0 +1,63 @@
+.interact-div{
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 50% 50%;
+    margin: 100px 150px;
+}
+
+.subscribe{
+    border-radius: 5px;
+    display: flex;
+    grid-template-columns: 75% 50%;
+    border-color: black;
+    border-style: solid;
+    padding: 4rem 3rem;
+    background-color:  #0096FF;
+}
+
+.offer{
+    border-radius: 5px;
+    display: flex;
+    grid-template-columns: 75% 50%;
+    border-color: black;
+    border-style: solid;
+    padding: 4rem 3rem;
+    background-color:  #0096FF;
+}
+
+
+.offer-button-area{
+    background-color: #b0e0e6;
+}
+
+.offer-button-area:hover{
+    background-color: #000f89;
+    color: white;
+    text-align: center;
+}
+
+.subscribe-content-area{
+    font-family: 'Lilita One', cursive;
+}
+
+.offer-content-area{
+    font-family: 'Lilita One', cursive;
+}
+
+.subscribe-button-area{
+    background-color: #b0e0e6;
+}
+
+.subscribe-button-area:hover{
+    background-color: #000f89;
+    color: white;
+    border-radius: 1px;
+}
+
+.offer-text{
+    font-family: 'Lilita One', cursive;
+}
+
+.subscribe-text{
+    font-family: 'Lilita One', cursive;
+}

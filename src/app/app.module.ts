@@ -16,7 +16,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatInputModule} from '@angular/material/input';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { SubscribeDialogComponent } from './subscribe-dialog/subscribe-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { OfferDialogComponent } from './offer-dialog/offer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     UserRegistrationComponent,
     DashboardComponent,
     NavbarComponent,
+    SubscribeDialogComponent,
+    OfferDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     AngularFireModule.initializeApp(environment.firebase),
     MatButtonModule,
     HttpClientModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDialogModule,
+    FormsModule
 
   ],
   providers: [],

@@ -1,0 +1,55 @@
+<div>
+    <mat-form-field class="search-feild">
+        <mat-label>	<mat-icon>search</mat-icon>Search...</mat-label>
+        <input matInput type="text" [(ngModel)]="searchValue" (keyup)=searchInput()>
+        <button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+<div class="subscribe">
+    <h3 class="heading"><u>{{heading1| uppercase }}</u></h3>
+    <div class="subscribe-modal">
+        <div *ngFor="let subscription of subscriptionList;index as i" (click)=selectSubscription(i)>
+            <mat-card class="channel-card">
+                <mat-card-content class="content">{{subscription}}</mat-card-content> 
+             </mat-card>              
+        </div>
+    </div>
+</div>
+<div *ngIf="startOffer()">
+<h3>Enter details to offer new {{selectedSubscription}}:-</h3>
+<form [formGroup]="newOfferForm" (ngSubmit)="onSubmit()">
+    <div class="new-offer">
+        <p>
+            <mat-form-field class="">
+              <label>Subscription Name:-</label>
+              <input matInput formControlName="offferTitle">
+            </mat-form-field>
+          </p>
+        
+          <p>
+            <mat-form-field class="">
+              <label>No of users</label>
+              <input type="text" matInput  formControlName="usersCount">
+            </mat-form-field>
+          </p>
+      
+          <p>
+              <mat-form-field class="">
+                <label>Price per user</label>
+                <input type="text" matInput  formControlName="price">
+              </mat-form-field>
+          </p>
+    </div>
+    
+  
+    <div class="buttons">
+      <div class="login-div">
+        <button type="submit" mat-raised-button class="offer-button">Post the offer</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

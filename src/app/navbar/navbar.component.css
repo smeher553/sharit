@@ -1,0 +1,12 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .title{
+    font-family: 'Lilita One', cursive;
+    color: black;
+  }
+
+  .title-nav-bar{
+    background-color: lightsteelblue;
+  }
