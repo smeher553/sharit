@@ -35,4 +35,25 @@ export class CallingServiceService {
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.post(url, requestBody,{headers:headers,observe:'response'});
   }
+
+  offerSubscription(requestBody:any){
+    let url="http://localhost:8080/shareit/sub/offerSubscription/isUpdate/false";
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type','application/json');
+    return this.httpCall.post(url, requestBody,{headers:headers,observe:'response'});
+  }
+
+  RequestSubscription(userName:any, id:number){
+    let url="http://localhost:8080/shareit/sub/requestForSubscription?userName="+userName+"&subscriptionId="+id;
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type','application/json');
+    return this.httpCall.post(url,{headers:headers,observe:'response'});
+  }
+
+  getSubscriptionByTitle(title:any){
+    let url="http://localhost:8080/shareit/sub/requestForSubscription?subscriptionName="+title;
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type','application/json');
+    return this.httpCall.get(url,{headers:headers,observe:'response'});
+  }            
 }

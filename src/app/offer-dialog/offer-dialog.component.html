@@ -18,8 +18,8 @@
     </div>
 </div>
 <div *ngIf="startOffer()">
-<h3>Enter details to offer new {{selectedSubscription}}:-</h3>
-<form [formGroup]="newOfferForm" (ngSubmit)="onSubmit()">
+<h3>Enter details to offer {{selectedSubscription}}:-</h3>
+<form [formGroup]="newOfferForm" >
     <div class="new-offer">
         <p>
             <mat-form-field class="">
@@ -37,16 +37,46 @@
       
           <p>
               <mat-form-field class="">
-                <label>Price per user</label>
+                <label>Price per user(in $)</label>
                 <input type="text" matInput  formControlName="price">
               </mat-form-field>
           </p>
+
+          <p>
+            <mat-form-field class="">
+              <label>Subscription Cycle</label>
+              <input type="text" matInput  formControlName="subscriptionCycle">
+              <!-- <div>
+                <select
+                class="custom-select mb-3"
+                matImput
+                formControlName="subscriptionCycle"
+              >
+                <option value="">Choose Cycle</option>
+                <option  value="month">Month
+                </option>
+                <option  value="year">Year
+                </option>
+              </select>
+              </div> -->
+
+              <!-- <div class="custom-control custom-radio">
+                <input id="male" type="radio" class="custom-control-input" value="year" name="subscriptionCycle" matInput formControlName="subscriptionCycle">
+                <label class="custom-control-label" for="male">Month</label>
+              </div>
+  
+              <div class="custom-control custom-radio">
+                <input id="female" type="radio" class="custom-control-input" value="month" name="subscriptionCycle" matInput formControlName="subscriptionCycle">
+                <label class="custom-control-label" for="female">Year</label>
+              </div> -->
+            </mat-form-field>
+        </p>
     </div>
     
   
     <div class="buttons">
       <div class="login-div">
-        <button type="submit" mat-raised-button class="offer-button">Post the offer</button>
+        <button type="submit" mat-raised-button class="offer-button" (click)="postOffer()">Post offer</button>
       </div>
     </div>
   </form>

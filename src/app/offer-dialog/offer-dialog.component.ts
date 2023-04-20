@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { CallingServiceService } from '../calling-service.service';
 
 @Component({
   selector: 'app-offer-dialog',
@@ -15,16 +18,20 @@ export class OfferDialogComponent implements OnInit {
   selectedSubscription:string;
   searchResult:any[];
   public newOfferForm: FormGroup;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar, private callingService :CallingServiceService) { }
 
   ngOnInit(): void {
 
     this.newOfferForm = this.formBuilder.group({
-      username: ["",],
-      password: [
+      offferTitle: ["",],
+      usersCount: [
         "",
-      ]
+      ],
+      price : ["",],
+      subscriptionCycle : ["",]
     });
   }
 
@@ -36,6 +43,13 @@ export class OfferDialogComponent implements OnInit {
   selectSubscription(i:any){
     this.selectedSubscription = this.subscriptionList[i];
     this.startOffer();
+    if(this.subscriptionList.length!==i+1){
+      this.newOfferForm.controls['offferTitle'].setValue(this.selectedSubscription)
+    }
+    else if(this.subscriptionList.length===i+1){
+      this.newOfferForm.controls['offferTitle'].setValue(null)
+
+    }
 
   }
 
@@ -52,5 +66,32 @@ export class OfferDialogComponent implements OnInit {
 
   onSubmit(){
 
+  }
+
+  postOffer(){
+    let obj = {
+      "subscriptionName" : this.newOfferForm.get('offferTitle')?.value,
+      "totalUser" : this.newOfferForm.get('usersCount')?.value,
+      "publishedBy" : sessionStorage.getItem("userName"),
+      "subscriptionCycle" : this.newOfferForm.get('subscriptionCycle')?.value,
+      "costPerCycle" : this.newOfferForm.get('price')?.value,
+      "usersLeft": this.newOfferForm.get('usersCount')?.value,
+    }
+
+    this.callingService.offerSubscription(obj).subscribe((res:any)=>{
+      this.newOfferForm.reset();
+      this.openSnackBar("New Offer publised successfully")
+    },
+    (error:any)=>{
+      this.openSnackBar("Some error occured in posting new offer")
+    }
+    );
+  }
+
+  openSnackBar(displayTest:string) {
+    this._snackBar.open(displayTest, 'Close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 }

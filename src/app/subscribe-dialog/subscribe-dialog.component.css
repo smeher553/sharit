@@ -1,5 +1,5 @@
 .channel-card{
-    border-style: solid;
+    border-style:dashed;
     border-color: black;
     font-family: 'Lilita One', cursive;
 }
@@ -28,3 +28,35 @@
     justify-content: end;
 }
 
+.result-card{
+    display: grid;
+    grid-template-columns: 130px 130px 130px 130px 130px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 8px;
+}
+
+.heading-card{
+    background-color: lightgrey;
+    display: grid;
+    grid-template-columns: 130px 130px 130px 130px 130px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 8px;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.white{
+    color:blue;
+}
+
+.red{
+    color: red;
+}
+
+/* .actions{
+    position: absolute;
+    z-index: 1;
+} */

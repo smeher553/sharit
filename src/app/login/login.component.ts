@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
       "userName": this.loginForm.get('username')?.value,
       "password": this.loginForm.get('password')?.value
     }
+
+    sessionStorage.setItem("userName",this.loginForm.get('username')?.value)
     this.authService.userLogin(requestBody).subscribe((res:any)=>{
       // alert('login sucessful');
     },

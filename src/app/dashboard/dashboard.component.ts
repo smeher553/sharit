@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   openDialog(component:any): void {
     this.dialog.open(component, {
       width: '800px',
+      maxHeight: '400px'
     });
   }
 

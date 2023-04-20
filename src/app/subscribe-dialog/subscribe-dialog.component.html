@@ -17,18 +17,33 @@
         </div>
     </div>
 </div>
-<div *ngIf=searchSubscription()>
+<div *ngIf="searchSubscription();else elseBlock">
 <h2>Below is the search results for {{selectedSubscription}} subscriptions:-</h2>
 <div class="search-result">
+    <mat-card class="heading-card">
+        <mat-card-content>Subscription</mat-card-content>
+        <mat-card-content>Published by</mat-card-content>
+        <mat-card-content>Cost per cycle</mat-card-content>
+        <mat-card-content class="content">Places left</mat-card-content> 
+        <mat-card-content class="content">Action</mat-card-content>
+     </mat-card>
     <div *ngFor="let result of searchResult;index as i">
-        <mat-card class="channel-card">
+        <mat-card class="result-card">
             <mat-card-title>{{selectedSubscription}}</mat-card-title>
-            <mat-card-subtitle>${{result.costPerUser}}/{{result.subscriptionCycle}}</mat-card-subtitle>
+            <mat-card-subtitle>{{result.publishedBy}}</mat-card-subtitle>
+            <mat-card-content>${{result.costPerUser}}/{{result.subscriptionCycle}}</mat-card-content>
             <mat-card-content class="content">{{result.UsersLeft}} User left</mat-card-content> 
             <mat-card-actions>
-                <button mat-button (click)="RequestSubscription()">SUBSCRIBE</button>
+                <button mat-raised-button color="warn" (click)="requestSubscription(i)">SUBSCRIBE</button>           
+                <!-- <button mat-icon-button color="warn" (click)="addToFavourites(i)" aria-label="add to favourites">
+                    <mat-icon>favorite</mat-icon>
+                  </button>   -->
               </mat-card-actions>
-         </mat-card>              
+              <!-- <textarea></textarea> -->
+         </mat-card> 
     </div>
 </div>
 </div>
+<ng-template #elseBlock>
+    <p>Search result is empty. please try with different subscription.</p>
+</ng-template>
