@@ -37,15 +37,16 @@ export class LoginComponent implements OnInit {
 
     sessionStorage.setItem("userName",this.loginForm.get('username')?.value)
     this.authService.userLogin(requestBody).subscribe((res:any)=>{
-      // alert('login sucessful');
+      alert('login sucessful');
+      this.router.navigate(['dashboard'])
+      localStorage.setItem("isLogin", "true");
     },
     (error:any)=>{
-      // alert('Error occured');
+      alert('Error occured');
     }
     );
 
-    this.router.navigate(['dashboard'])
-    localStorage.setItem("isLogin", "true");
+   
   }
 
   onGoogleLogin(){

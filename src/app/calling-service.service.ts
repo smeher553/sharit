@@ -22,36 +22,37 @@ export class CallingServiceService {
   }
 
   userLogin(requestBody:any){
-    let url="http://localhost:8080/shareit/mem-auth/login";
+    let url="http://localhost:8081/shareit/mem-auth/login";
     let headers = new HttpHeaders();
-    headers = headers.set('Access-Control-Allow-Origin', '*');
+    // headers = headers.set('Access-Control-Allow-Origin', '*');
     // header('Access-Control-Allow-Origin: *');
+    headers = headers.set('Content-Type','application/json');
     return this.httpCall.post(url,requestBody,{headers:headers,observe:'response'});
   }
 
   userRegistration(requestBody:any){
-    let url="http://localhost:8080/shareit/mem-auth/registration";
+    let url="http://localhost:8081/shareit/mem-auth/registration";
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.post(url, requestBody,{headers:headers,observe:'response'});
   }
 
   offerSubscription(requestBody:any){
-    let url="http://localhost:8080/shareit/sub/offerSubscription/isUpdate/false";
+    let url="http://localhost:8081/shareit/sub/offerSubscription/isUpdate/false";
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.post(url, requestBody,{headers:headers,observe:'response'});
   }
 
   RequestSubscription(userName:any, id:number){
-    let url="http://localhost:8080/shareit/sub/requestForSubscription?userName="+userName+"&subscriptionId="+id;
+    let url="http://localhost:8081/shareit/sub/requestForSubscription?userName="+userName+"&subscriptionId="+id;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.post(url,{headers:headers,observe:'response'});
   }
 
   getSubscriptionByTitle(title:any){
-    let url="http://localhost:8080/shareit/sub/requestForSubscription?subscriptionName="+title;
+    let url="http://localhost:8081/shareit/sub/requestForSubscription?subscriptionName="+title;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.get(url,{headers:headers,observe:'response'});
