@@ -46,7 +46,7 @@ export class UserRegistrationComponent implements OnInit {
 
     },
     (error:any)=>{
-      alert('Error occured');
+      this.openSnackBar(error.error.response);
     }
     );
   }

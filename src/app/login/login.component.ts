@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { CallingServiceService } from '../calling-service.service';
 
@@ -12,7 +13,10 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
   error:any = "wrong credentials";
-  constructor(private formBuilder: FormBuilder,private router: Router, private authService: CallingServiceService) { }
+  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+
+  constructor(private formBuilder: FormBuilder,private router: Router, private authService: CallingServiceService,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -37,12 +41,14 @@ export class LoginComponent implements OnInit {
 
     sessionStorage.setItem("userName",this.loginForm.get('username')?.value)
     this.authService.userLogin(requestBody).subscribe((res:any)=>{
-      alert('login sucessful');
+      
       this.router.navigate(['dashboard'])
+      this.openSnackBar("Login successful")
       localStorage.setItem("isLogin", "true");
     },
     (error:any)=>{
-      alert('Error occured');
+      // alert('Error occured');
+      this.openSnackBar(error.error.response)
     }
     );
 
@@ -55,5 +61,12 @@ export class LoginComponent implements OnInit {
 
   register(){
     this.router.navigate(["user-registration"]);
+  }
+
+  openSnackBar(displayTest:string) {
+    this._snackBar.open(displayTest, 'Close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
   }
 }
