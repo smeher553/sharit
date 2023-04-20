@@ -57,40 +57,30 @@ export class SubscribeDialogComponent implements OnInit {
     
     this.searchResult=[];
 
-    let obj : any = [{
-      "id":"1",
-      "title":"netflix",
-      "costPerUser":"2",
-      "publishedBy":"sam",
-      "subscriptionCycle":"month",
-      "UsersLeft":3
-     },
-     {
-      "id":"2",
-      "title":"netflix",
-      "publishedBy":"samfdxfffffffffffff",
-      "costPerUser":"2",
-      "subscriptionCycle":"month",
-      "UsersLeft":3
-     },
-     {
-      "id":"3",
-      "title":"netflix",
-      "costPerUser":"2",
-      "publishedBy":"sersssssssssssssss",
-      "subscriptionCycle":"month",
-      "UsersLeft":3
-     }]
-
-     this.searchResult=obj;
-
      this.callingService.getSubscriptionByTitle(this.selectedSubscription).subscribe((res:any)=>{
-      this.searchResult= res;
+      this.searchResult= res.body.responseBody;
+      this.searchResult = this.searchResult.filter((ele:any)=>ele.publishedBy!==sessionStorage.getItem("userName"));
+      // this.searchResult = this.searchResult.filter((ele:any)=>ele.pendingRequest)
+      if(this.searchResult.length===0){
+        this.openSnackBar("No subscriptions present at this moment")
+      }
+      else{
+        this.openSnackBar("Subscription list fetched successfully")
+      }
+      
      },
      (error:any)=>{
       console.log("error occured");
      }
      );
+
+    //  this.callingService.getSubscriptionByTitle(this.selectedSubscription).subscribe((res:any)=>{
+    //   this.searchResult= res;
+    //  },
+    //  (error:any)=>{
+    //   console.log("error occured");
+    //  }
+    //  );
 
   }
 
@@ -99,8 +89,9 @@ export class SubscribeDialogComponent implements OnInit {
     let selectedRquest = this.searchResult[i];
     // this.                                                  service call
     this.callingService.RequestSubscription(sessionStorage.getItem("userName"),selectedRquest.id).subscribe((res:any)=>{
-      this.openSnackBar(selectedRquest.title+" Request sent.");
-      this.searchResult = this.searchResult.filter((ele:any)=>!ele.id.includes(selectedRquest.id));
+      this.openSnackBar(selectedRquest.subscriptionName+" Request sent successfully");
+      this.searchResult = this.searchResult.filter((ele:any)=>ele.id!==selectedRquest.id
+      );
     },
     (error:any)=>{
       console.log("error occured");

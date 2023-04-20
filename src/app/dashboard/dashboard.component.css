@@ -61,3 +61,30 @@
 .subscribe-text{
     font-family: 'Lilita One', cursive;
 }
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+
+  .result-card{
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 8px;
+}
+
+.heading-card{
+    background-color: lightgrey;
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 8px;
+    padding: 0px;
+    margin: 0px;
+}

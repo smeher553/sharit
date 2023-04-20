@@ -83,7 +83,7 @@ export class OfferDialogComponent implements OnInit {
       this.openSnackBar("New Offer publised successfully")
     },
     (error:any)=>{
-      this.openSnackBar("Some error occured in posting new offer")
+      this.openSnackBar(error.error.response)
     }
     );
   }

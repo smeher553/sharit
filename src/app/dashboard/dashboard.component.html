@@ -20,4 +20,42 @@
         </div>
     </div>
     <!-- <div class="easy-options"></div> -->
+    <h3>Offered Subscription List</h3>
+    <div class="offered-list" *ngFor="let sub of offeredSubscriptions;index as i">
+        
+        <mat-expansion-panel (opened)="panelOpenState = true;getSubscriptiondetails(i)"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{sub.subscriptionName}}
+      </mat-panel-title>
+      <mat-panel-description>
+        
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-tab-group animationDuration="0ms">
+        <mat-tab label="Pending Requests">
+            <mat-card class="heading-card">
+                <mat-card-content>Member Name</mat-card-content>
+                <mat-card-content>Member City</mat-card-content>
+                <mat-card-content class="content">Action</mat-card-content>
+             </mat-card>
+            <div *ngFor="let result of requestedList;index as j">
+                <mat-card class="result-card">
+                    <!-- <mat-card-subtitle>{{result.}}</mat-card-subtitle>
+                    <mat-card-content>${{result.}}</mat-card-content> -->
+                    <mat-card-content class="content">{{result.usersLeft}</mat-card-content> 
+                    <mat-card-actions>
+                        <button mat-raised-button color="warn" (click)="approve(i,j)">Approve</button>           
+                        <button mat-icon-button color="warn" (click)="decline(i,j)" aria-label="add to favourites">
+                            Decline
+                          </button> 
+                      </mat-card-actions>
+                 </mat-card> 
+            </div>
+        </mat-tab>
+        <mat-tab label="Subscribers">Content 2</mat-tab>
+      </mat-tab-group>
+  </mat-expansion-panel>
+    </div>
 </div>

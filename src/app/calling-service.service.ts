@@ -52,9 +52,23 @@ export class CallingServiceService {
   }
 
   getSubscriptionByTitle(title:any){
-    let url="http://localhost:8081/shareit/sub/requestForSubscription?subscriptionName="+title;
+    let url="http://localhost:8081/shareit/sub/getBySubscriptionName?subscriptionName="+title;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.get(url,{headers:headers,observe:'response'});
-  }            
+  } 
+  
+  getByPublishedUser(userName:any){
+    let url="http://localhost:8081/shareit/sub/getPublishedSubscription?userName="+userName;
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type','application/json');
+    return this.httpCall.get(url,{headers:headers,observe:'response'});
+  } 
+
+  getSubscriptionByIdAndUserName(userName:any,id:number){
+    let url="http://localhost:8081/shareit/sub/getPublishedSubscription?userName="+userName+"&id="+id;
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type','application/json');
+    return this.httpCall.get(url,{headers:headers,observe:'response'});
+  } 
 }

@@ -24,6 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { OfferDialogComponent } from './offer-dialog/offer-dialog.component';
 import {MatRippleModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDialogModule,
     FormsModule,
     MatRippleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatTabsModule
 
   ],
   providers: [],
