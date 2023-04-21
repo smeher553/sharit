@@ -44,15 +44,14 @@ export class LoginComponent implements OnInit {
       
       this.router.navigate(['dashboard'])
       this.openSnackBar("Login successful")
-      localStorage.setItem("isLogin", "true");
+      sessionStorage.setItem("city",res.body.responseBody)
+      sessionStorage.setItem("isLogin", "true");
     },
     (error:any)=>{
       // alert('Error occured');
       this.openSnackBar(error.error.response)
     }
     );
-
-   
   }
 
   onGoogleLogin(){

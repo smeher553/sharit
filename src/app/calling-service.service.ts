@@ -51,8 +51,8 @@ export class CallingServiceService {
     return this.httpCall.post(url,{headers:headers,observe:'response'});
   }
 
-  getSubscriptionByTitle(title:any){
-    let url="http://localhost:8081/shareit/sub/getBySubscriptionName?subscriptionName="+title;
+  getSubscriptionByTitle(title:any,city:any){
+    let url="http://localhost:8081/shareit/sub/getBySubscriptionName?subscriptionName="+title+"&city="+city;
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type','application/json');
     return this.httpCall.get(url,{headers:headers,observe:'response'});

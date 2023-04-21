@@ -57,12 +57,12 @@ export class SubscribeDialogComponent implements OnInit {
     
     this.searchResult=[];
 
-     this.callingService.getSubscriptionByTitle(this.selectedSubscription).subscribe((res:any)=>{
+     this.callingService.getSubscriptionByTitle(this.selectedSubscription,sessionStorage.getItem("city")).subscribe((res:any)=>{
       this.searchResult= res.body.responseBody;
       this.searchResult = this.searchResult.filter((ele:any)=>ele.publishedBy!==sessionStorage.getItem("userName"));
       // this.searchResult = this.searchResult.filter((ele:any)=>ele.pendingRequest)
       if(this.searchResult.length===0){
-        this.openSnackBar("No subscriptions present at this moment")
+        this.openSnackBar("No subscriptions present at this moment in your city")
       }
       else{
         this.openSnackBar("Subscription list fetched successfully")
